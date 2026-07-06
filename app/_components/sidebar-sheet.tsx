@@ -3,9 +3,7 @@
 import { Button } from "./ui/button"
 import { CalendarIcon, HomeIcon, LogInIcon, LogOutIcon } from "lucide-react"
 import { SheetClose, SheetContent, SheetHeader, SheetTitle } from "./ui/sheet"
-import { quickSearchOptions } from "../_constants/search"
 import Link from "next/link"
-import Image from "next/image"
 import { Dialog, DialogContent, DialogTrigger } from "./ui/dialog"
 import { signOut, useSession } from "next-auth/react"
 import { Avatar, AvatarImage } from "./ui/avatar"
@@ -65,24 +63,6 @@ const SidebarSheet = () => {
             Agendamentos
           </Link>
         </Button>
-      </div>
-
-      <div className="flex flex-col gap-2 border-b border-solid py-5">
-        {quickSearchOptions.map((option) => (
-          <SheetClose key={option.title} asChild>
-            <Button className="justify-start gap-2" variant="ghost" asChild>
-              <Link href={`/barbershops?service=${option.title}`}>
-                <Image
-                  alt={option.title}
-                  src={option.imageUrl}
-                  height={18}
-                  width={18}
-                />
-                {option.title}
-              </Link>
-            </Button>
-          </SheetClose>
-        ))}
       </div>
 
       {data?.user && (
